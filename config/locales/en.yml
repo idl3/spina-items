@@ -10,8 +10,10 @@ en:
       author_name: "Author name"
       average_rating: 'Average rating'
       filter_by: 'Filter by'
+      describe: "Describe this item"
+      confirm_delete: "Are you sure you want to delete this item?"
     name: "Name"
     new: "New"
     edit: "Edit"
-    destroy: "Destroy"
+    destroy: "Remove"
     ago: " ago"

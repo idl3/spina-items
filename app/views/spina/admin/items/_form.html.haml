@@ -7,29 +7,24 @@
       %table.table.table-form
         %tr
           %td
-            Naam
+            = t('spina.name')
           %td
             = f.text_field :name, placeholder: t('spina.item.author_name')
         %tr
           %td
-            Beoordeling
+            = t('spina.item.icon')
           %td
-            .select-dropdown= f.select :rating, [["1 ster", 1], ["2 sterren", 2], ["3 sterren", 3], ["4 sterren", 4], ["5 sterren", 5]]
+            = f.file_field :icon
         %tr
           %td
-            Datum
+            = t('spina.item.description')
           %td
-            = f.text_field :created_at, value: (@item.created_at.strftime("%d-%m-%Y") unless @item.new_record?), placeholder: "Datum van beoordeling", class: 'datepicker'
-        %tr
-          %td
-            Toelichting
-          %td
-            = f.text_area :explanation, placeholder: "Toelichting op de beoordeling"
+            = f.text_area :description, placeholder: t('spina.item.describe')
 
   %button.button.button-primary{type: 'submit', data: {icon: 'o'}}
-    Beoordeling opslaan
+    = t('spina.item.save')
 
-  = link_to "Annuleren", spina.admin_items_path, class: 'button button-link'
+  = link_to t('spina.item.cancel'), spina.admin_items_path, class: 'button button-link'
 
   - unless @item.new_record?
     .pull-right= link_to t('spina.destroy'), spina.admin_item_path(@item), method: :delete, confirm: "Weet je zeker dat je de beoordeling van <strong>#{@item.name}</strong> wilt verwijderen?", class: 'button button-link button-danger'

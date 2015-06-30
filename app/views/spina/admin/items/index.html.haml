@@ -5,14 +5,11 @@
     %p
       = "#{t('spina.item.filter_by')}"
       = select_tag :filter_by, options_for_select([["All","All"], ["Books","Books"], ["Games","Games"]])
-    %p
-      = "#{t('spina.item.average_rating')}: "
-      %strong= @average_rating.round(1)
-
 .table-container
   %table.table
     %thead
       %tr
+        %th
         %th= t('spina.name')
         %th= t('spina.item.name')
         %th
@@ -21,20 +18,22 @@
       - if @items.any?
         - @items.each do |item|
           %tr
+            %td.icon
+              = image_tag item.icon.small_thumb, class: "radius"
             %td.nowrap
               = item.name
               %small= time_ago_in_words(item.created_at) + t('spina.ago')
             %td
-              .rating
-                - item.rating.times do
-                  %i{data: {icon: '5'}}
-                - (5 - item.rating).times do
-                  %i.icon-dimmed{data: {icon: '5'}}
-              %p= item.explanation
+              %p= item.description
             %td.nowrap
               = link_to t('spina.edit'), spina.edit_admin_item_path(item), class: 'button button-link', data: {icon: 'q'}
+              %br
+              = link_to t('spina.destroy'), spina.admin_item_path(item), method: :delete, class: 'button button-link', data: {icon: 'q', confirm: t('spina.item.confirm_delete')}
 
       - else
         %tr
           %td.align-center{colspan: 4}
             %em= t('spina.item.no_items')
+
+- content_for :plugin_stylesheets do
+  = stylesheet_link_tag "spina/admin/items"

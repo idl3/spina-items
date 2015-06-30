@@ -11,7 +11,6 @@ module Spina
 
       def index
         @items = Item.all
-        @average_rating = Item.average('rating') || 0
       end
 
       def new
@@ -40,7 +39,6 @@ module Spina
         @item = Item.find(params[:id])
 
         add_breadcrumb @item.name
-
         if @item.update_attributes(item_params)
           redirect_to spina.admin_items_url, notice: "#{t('spina.item.name')} #{@item.name} #{t('spina.item.saved')}"
         else
@@ -61,7 +59,7 @@ module Spina
       end
 
       def item_params
-        params.require(:item).permit(:name, :rating, :created_at, :explanation)
+        params.require(:item).permit(:name, :icon, :description)
       end
     end
   end

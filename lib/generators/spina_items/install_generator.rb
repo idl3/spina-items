@@ -19,6 +19,10 @@ module SpinaItems
         migration_template "create_spina_items_table.rb", Rails.root.join("db/migrate/create_spina_items_table.rb")
       end
 
+      def copy_icon_uploader
+        copy_file "item.rb", Rails.root.join("app/models/spina/item.rb")
+        copy_file "icon_uploader.rb", Rails.root.join("app/uploaders/spina/icon_uploader.rb")
+      end
     end
   end
 end

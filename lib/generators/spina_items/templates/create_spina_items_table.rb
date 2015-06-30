@@ -2,9 +2,8 @@ class CreateSpinaItemsTable < ActiveRecord::Migration
   def change
     create_table :spina_items do |t|
       t.string :name
-      t.integer :rating, null: false
-      t.text :explanation
-      t.date :confirmed_at
+      t.string :icon
+      t.text :description
       t.timestamps
     end
   end

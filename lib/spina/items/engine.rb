@@ -12,7 +12,7 @@ module Spina
 
       initializer "register plugin" do
         plugin = ::Spina::Plugin.new
-        plugin.name = "Reviews"
+        plugin.name = "Items"
         plugin.config = Items.config
         ::Spina.register_plugin(plugin)
       end
