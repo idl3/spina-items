@@ -6,8 +6,10 @@ en:
       created: "Item was successfully created"
       saved: "was saved"
       destroyed: "was destroyed"
-      no_items: "You've gotten no reviews yet."
+      no_items: "You have not created any items yet."
       author_name: "Author name"
+      average_rating: 'Average rating'
+      filter_by: 'Filter by'
     name: "Name"
     new: "New"
     edit: "Edit"

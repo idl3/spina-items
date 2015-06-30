@@ -3,8 +3,11 @@
 
   .pull-right
     %p
-      = "#{t(:average_rating)}: "
-      <strong>#{@average_rating.round(1)}</strong>
+      = "#{t('spina.item.filter_by')}"
+      = select_tag :filter_by, options_for_select([["All","All"], ["Books","Books"], ["Games","Games"]])
+    %p
+      = "#{t('spina.item.average_rating')}: "
+      %strong= @average_rating.round(1)
 
 .table-container
   %table.table

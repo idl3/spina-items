@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    spina-reviews (0.0.3)
+    spina-items (0.0.3)
       rails (~> 4.0)
 
 GEM
@@ -102,5 +102,5 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  spina-reviews!
+  spina-items!
   sqlite3
