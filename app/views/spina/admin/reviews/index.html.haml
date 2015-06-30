@@ -1,0 +1,37 @@
+.filters
+  = link_to t("spina.item.new"), spina.new_admin_item_path, class: 'button button-primary', data: {icon: 't'}
+
+  .pull-right
+    %p
+      = "#{t(:average_rating)}: "
+      <strong>#{@average_rating.round(1)}</strong>
+
+.table-container
+  %table.table
+    %thead
+      %tr
+        %th= t('spina.name')
+        %th= t('spina.item.name')
+        %th
+
+    %tbody
+      - if @items.any?
+        - @items.each do |item|
+          %tr
+            %td.nowrap
+              = item.name
+              %small= time_ago_in_words(item.created_at) + t('spina.ago')
+            %td
+              .rating
+                - item.rating.times do
+                  %i{data: {icon: '5'}}
+                - (5 - item.rating).times do
+                  %i.icon-dimmed{data: {icon: '5'}}
+              %p= item.explanation
+            %td.nowrap
+              = link_to t('spina.edit'), spina.edit_admin_item_path(item), class: 'button button-link', data: {icon: 'q'}
+
+      - else
+        %tr
+          %td.align-center{colspan: 4}
+            %em= t('spina.item.no_items')

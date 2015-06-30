@@ -1,0 +1,35 @@
+= form_for [spina, :admin, @item], html: {autocomplete: "off"} do |f|
+  - content_for :notification_alert do
+    = error_explanation!(@item)
+
+  #page_content.tab-content.active
+    .table-container
+      %table.table.table-form
+        %tr
+          %td
+            Naam
+          %td
+            = f.text_field :name, placeholder: t('spina.item.author_name')
+        %tr
+          %td
+            Beoordeling
+          %td
+            .select-dropdown= f.select :rating, [["1 ster", 1], ["2 sterren", 2], ["3 sterren", 3], ["4 sterren", 4], ["5 sterren", 5]]
+        %tr
+          %td
+            Datum
+          %td
+            = f.text_field :created_at, value: (@item.created_at.strftime("%d-%m-%Y") unless @item.new_record?), placeholder: "Datum van beoordeling", class: 'datepicker'
+        %tr
+          %td
+            Toelichting
+          %td
+            = f.text_area :explanation, placeholder: "Toelichting op de beoordeling"
+
+  %button.button.button-primary{type: 'submit', data: {icon: 'o'}}
+    Beoordeling opslaan
+
+  = link_to "Annuleren", spina.admin_items_path, class: 'button button-link'
+
+  - unless @item.new_record?
+    .pull-right= link_to t('spina.destroy'), spina.admin_item_path(@item), method: :delete, confirm: "Weet je zeker dat je de beoordeling van <strong>#{@item.name}</strong> wilt verwijderen?", class: 'button button-link button-danger'

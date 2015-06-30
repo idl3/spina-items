@@ -1,0 +1,15 @@
+en:
+  spina:
+    item:
+      name: "Item"
+      new: "New Item"
+      created: "Item was successfully created"
+      saved: "was saved"
+      destroyed: "was destroyed"
+      no_items: "You've gotten no reviews yet."
+      author_name: "Author name"
+    name: "Name"
+    new: "New"
+    edit: "Edit"
+    destroy: "Destroy"
+    ago: " ago"
